@@ -23,11 +23,11 @@ jobs:
   Monitoring-Pipeline:
     needs: Wait-for-images
     if: ${{ needs.Wait-for-images.outputs.conclusion }} == 'success'
-    uses: ${{ github.repository_owner }}/qubership-test-pipelines/.github/workflows/monitoring.yaml@monitoring
+    # !!! Change the repository owner after tests !!!
+    uses: Beauline/qubership-test-pipelines/.github/workflows/monitoring.yaml@monitoring
     with:
       service_branch: '${{ github.head_ref || github.ref_name }}'
       versions_file: '.github/versions.yaml'
       pipeline_branch: 'monitoring' #this value must match the value after '@' in 'uses'
       repository_name: '${{ github.repository_owner }}/qubership-monitoring-operator'
       kind-layout: 'single-node'
-
