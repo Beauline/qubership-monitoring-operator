@@ -7,7 +7,7 @@ on:
     branches:
     - '**'
     paths-ignore:
-    - '.github/**'
+    # - '.github/**'
     - 'docs/**'
     - 'CODE-OF-CONDUCT.md'
     - 'CONTRIBUTING.md'
@@ -25,6 +25,9 @@ on:
     - 'LICENSE'
     - 'README.md'
     - 'SECURITY.md'
+  workflow_run:
+    workflows: [Run Monitoring Pipeline]
+    types: [requested]
 
 concurrency:
   # On main/release, we don't want any jobs cancelled so the sha is used to name the group
