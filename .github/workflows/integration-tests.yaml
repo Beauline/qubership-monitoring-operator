@@ -29,4 +29,5 @@ jobs:
       versions_file: '.github/versions.yaml'
       pipeline_branch: 'monitoring' #this value must match the value after '@' in 'uses'
       repository_name: '${{ github.repository_owner }}/qubership-monitoring-operator'
+      kind-layout: 'single-node'
 
