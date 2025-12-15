@@ -71,6 +71,7 @@ rules:
       - "discovery.k8s.io"
     resources:
       - endpointslices
+      - ''
     verbs:
       - 'get'
       - 'list'
