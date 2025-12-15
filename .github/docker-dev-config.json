@@ -1,0 +1,20 @@
+{
+    "components": [
+        {
+            "name": "monitoring-operator",
+            "file": "./Dockerfile",
+            "context": "monitoring-operator"
+        },
+        {
+            "name": "monitoring-int-tests",
+            "file": "test/robot-tests/Dockerfile",
+            "context": "integration-tests"
+        },
+        {
+            "name": "monitoring-transfer",
+            "file": "docker-transfer/Dockerfile",
+            "context": ""
+        }
+    ],
+    "platforms": "linux/amd64,linux/arm64"
+}
