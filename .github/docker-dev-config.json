@@ -1,17 +1,17 @@
 {
     "components": [
         {
-            "name": "monitoring-operator",
+            "name": "qubership-monitoring-operator",
             "file": "Dockerfile",
             "context": ""
         },
         {
-            "name": "monitoring-int-tests",
+            "name": "qubership-monitoring-int-tests",
             "file": "test/robot-tests/Dockerfile",
             "context": "test/robot-tests"
         },
         {
-            "name": "monitoring-transfer",
+            "name": "qubership-monitoring-transfer",
             "file": "docker-transfer/Dockerfile",
             "context": ""
         }
