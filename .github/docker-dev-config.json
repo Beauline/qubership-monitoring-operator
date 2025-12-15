@@ -2,13 +2,13 @@
     "components": [
         {
             "name": "monitoring-operator",
-            "file": "./Dockerfile",
-            "context": "monitoring-operator"
+            "file": "Dockerfile",
+            "context": ""
         },
         {
             "name": "monitoring-int-tests",
             "file": "test/robot-tests/Dockerfile",
-            "context": "integration-tests"
+            "context": "test/robot-tests"
         },
         {
             "name": "monitoring-transfer",
