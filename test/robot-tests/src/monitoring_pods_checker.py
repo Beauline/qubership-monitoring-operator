@@ -108,9 +108,9 @@ if __name__ == '__main__':
             targets = check_vmagent_targets()
             print(f'VmAgent total targets: {targets}')
             if targets >= 10:
-                print('VmAgent has required amount of targets. Waiting 30 seconds to make sure all targets are scraped...')
+                print('VmAgent has required amount of targets. Waiting 1 minute to make sure all targets are scraped...')
                 print('Starting robot tests...')
-                time.sleep(30)
+                time.sleep(60)
                 exit(0)
             print(f'VmAgent does not have required amount of targets yet, retrying in {vmagent_check_interval} seconds...')
             time.sleep(vmagent_check_interval)
