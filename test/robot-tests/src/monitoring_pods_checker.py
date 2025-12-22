@@ -1,14 +1,8 @@
 import time
 from os import environ
 import re
-import sys
 
 from PlatformLibrary import PlatformLibrary
-from kubernetes import client, config
-sys.stdout.reconfigure(line_buffering=True)
-
-config.load_incluster_config()
-v1 = client.CoreV1Api()
 
 namespace = environ.get('NAMESPACE')
 operator = environ.get('OPERATOR')
@@ -44,7 +38,7 @@ def check_vmagent_targets():
         return 0
     pod_name = pods[0]
     try:
-        last_log = v1.read_namespaced_pod_log(name=pod_name, namespace=namespace, container='vmagent', tail_lines=200)
+        last_log = k8s_lib.get_pod_logs(pod_name=pod_name, namespace=namespace, container_name='vmagent', tail_lines=200)
     except Exception as e:
         print(f'Failed to get {pod_name} pod logs: {e}')
         return 0
@@ -114,7 +108,9 @@ if __name__ == '__main__':
             targets = check_vmagent_targets()
             print(f'VmAgent total targets: {targets}')
             if targets >= 10:
-                print('VmAgent has required amount of targets. Starting robot tests...')
+                print('VmAgent has required amount of targets. Waiting 30 seconds to make sure all targets are scraped...')
+                print('Starting robot tests...')
+                time.sleep(30)
                 exit(0)
             print(f'VmAgent does not have required amount of targets yet, retrying in {vmagent_check_interval} seconds...')
             time.sleep(vmagent_check_interval)
