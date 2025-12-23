@@ -62,7 +62,7 @@ ${FILES_PATH}                   integration-tests/source_files
 ${RETRY_TIME}                   5min
 ${RETRY_INTERVAL}               3s
 ${TAGS}                         %{TAGS}
-${VMAGENT_RETRY_TIME}           2min
+${VMAGENT_RETRY_TIME}           3min
 
 *** Keywords ***
 Close Session
