@@ -62,7 +62,6 @@ ${FILES_PATH}                   integration-tests/source_files
 ${RETRY_TIME}                   5min
 ${RETRY_INTERVAL}               3s
 ${TAGS}                         %{TAGS}
-${VMAGENT_RETRY_TIME}           3min
 
 *** Keywords ***
 Close Session
@@ -255,7 +254,7 @@ Check Target And Metrics Are Ready
 Check Vmagent Target Metrics With Retry
     [Arguments]  ${target}  ${all_active_targets}  ${metrics}
     ${flag}=  Wait Until Keyword Succeeds
-    ...  ${VMAGENT_RETRY_TIME}  ${RETRY_INTERVAL}
+    ...  ${RETRY_TIME}  ${RETRY_INTERVAL}
     ...  Check Target And Metrics Are Ready
     ...  ${target}  ${all_active_targets}  ${metrics}
     RETURN  ${flag}
@@ -269,7 +268,7 @@ Check Kube State Metrics With Retry
     [Arguments]  ${kube_state_metrics_flag}  ${metrics}
     ${flag}=  Run Keyword If  ${kube_state_metrics_flag}==True
     ...  Wait Until Keyword Succeeds
-    ...  ${VMAGENT_RETRY_TIME}  ${RETRY_INTERVAL}
+    ...  ${RETRY_TIME}  ${RETRY_INTERVAL}
     ...  Check Kube State Metrics Are Ready
     ...  ${metrics}
     RETURN  ${flag}
