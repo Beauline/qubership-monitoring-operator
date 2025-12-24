@@ -25,6 +25,21 @@ on:
     - 'LICENSE'
     - 'README.md'
     - 'SECURITY.md'
+  workflow_dispatch:
+    inputs:
+      tags:
+        required: false
+        type: string
+        default: ''
+        description: 'Tags'
+      dry-run:
+        required: true
+        type: boolean
+        default: false
+        description: 'Dry run'
+  workflow_run:
+    workflows: [Run Monitoring Pipeline]
+    types: [requested]
 
 concurrency:
   # On main/release, we don't want any jobs cancelled so the sha is used to name the group
