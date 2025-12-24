@@ -78,7 +78,7 @@ jobs:
         tags: |
           type=ref,event=branch
           type=ref,event=tag
-          type=sha,format=short,prefix=
+          type=raw,value=${{ github.sha }},format={{slice 0 11}}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
