@@ -24,7 +24,7 @@ jobs:
     needs: Wait-for-images
     if: ${{ needs.Wait-for-images.outputs.conclusion }} == 'success'
     # !!! Change the repository owner after tests !!!
-    uses: Netcracker/qubership-test-pipelines/.github/workflows/monitoring.yaml@monitoring
+    uses: Beauline/qubership-test-pipelines/.github/workflows/monitoring.yaml@monitoring
     with:
       service_branch: ${{ github.sha }}
       # service_branch: '${{ github.head_ref || github.ref_name }}'
